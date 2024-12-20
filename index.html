@@ -14,6 +14,7 @@
             height: 100vh;
             margin: 0;
             background-color: #f3f3f3;
+            flex-direction: column; /* Apila el corazón y el mensaje verticalmente */
         }
 
         .corazon {
@@ -28,7 +29,6 @@
             color: #ff4081;
             font-weight: bold;
             text-align: center;
-            margin-top: 20px;
             animation: aparecer 1s ease forwards;
         }
 
@@ -64,13 +64,22 @@
 <body>
 
     <div class="corazon" id="corazon">❤️</div>
-    <div class="mensaje" id="mensaje">¡Se te adora mi preciosa Yin!</div>
+    <div class="mensaje" id="mensaje">¡Se te adora Yin!</div>
 
     <script>
         // Mostrar el mensaje automáticamente después de la explosión
-        setTimeout(function() {
-            document.getElementById('mensaje').style.display = 'block';
-        }, 1500); // Tiempo de espera para que el corazón "explote"
+        window.onload = function() {
+            const mensaje = document.getElementById('mensaje');
+            const corazon = document.getElementById('corazon');
+
+            // Inicia la animación del corazón
+            corazon.style.animation = "crecerYExplosión 1.5s ease-in-out forwards";
+
+            // Muestra el mensaje después de 1.5 segundos (duración de la animación del corazón)
+            setTimeout(function() {
+                mensaje.style.display = 'block';
+            }, 1500);
+        };
     </script>
 
 </body>
