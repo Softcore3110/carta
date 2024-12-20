@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta</title>
+    <title>Carta Interactiva</title>
     <style>
+        /* Estilos generales */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -12,41 +13,65 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f7f7f7;
+            background-color: #f3f3f3;
         }
-        .carta {
-            background-color: #fff;
-            padding: 20px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            text-align: center;
+
+        .corazon {
+            font-size: 50px;
+            color: red;
+            animation: crecerYExplosión 3s ease-in-out forwards;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
         }
-        .carta:hover {
-            transform: scale(1.05);
-        }
+
         .mensaje {
             display: none;
-            margin-top: 20px;
-            font-size: 20px;
-            color: #4caf50;
+            font-size: 24px;
+            color: #ff4081;
             font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            animation: aparecer 1s ease forwards;
+        }
+
+        /* Animación del corazón: crece y explota */
+        @keyframes crecerYExplosión {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(3); /* Crece 3 veces su tamaño */
+            }
+            100% {
+                transform: scale(0); /* Se hace invisible (explota) */
+            }
+        }
+
+        /* Animación para hacer aparecer el mensaje */
+        @keyframes aparecer {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="carta" onclick="mostrarMensaje()">
-        <h3>Carta Secreta</h3>
-        <p>Haz clic para abrir la carta</p>
-        <div class="mensaje" id="mensaje">Se te adora Yin</div>
-    </div>
+
+    <div class="corazon" onclick="mostrarMensaje()">❤️</div>
+    <div class="mensaje" id="mensaje">¡Se te adora Yin!</div>
 
     <script>
         function mostrarMensaje() {
-            document.getElementById('mensaje').style.display = 'block';
+            // Muestra el mensaje después de la explosión
+            setTimeout(function() {
+                document.getElementById('mensaje').style.display = 'block';
+            }, 3000); // Tiempo de espera para que el corazón "explote"
         }
     </script>
+
 </body>
-  </html>
+</html>
