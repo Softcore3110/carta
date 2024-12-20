@@ -20,7 +20,6 @@
             font-size: 50px;
             color: red;
             animation: crecerYExplosión 1.5s ease-in-out forwards;
-            cursor: pointer;
         }
 
         .mensaje {
@@ -64,20 +63,14 @@
 </head>
 <body>
 
-    <div class="corazon" onclick="mostrarMensaje()">❤️</div>
-    <div class="mensaje" id="mensaje">¡Se te adora Yin!</div>
+    <div class="corazon" id="corazon">❤️</div>
+    <div class="mensaje" id="mensaje">¡Se te adora mi preciosa Yin!</div>
 
     <script>
-        function mostrarMensaje() {
-            // Inicia la animación de explosión
-            const corazon = document.querySelector('.corazon');
-            corazon.style.pointerEvents = 'none'; // Evita múltiples clics
-
-            // Muestra el mensaje después de la explosión
-            setTimeout(function() {
-                document.getElementById('mensaje').style.display = 'block';
-            }, 1500); // Tiempo de espera para que el corazón "explote"
-        }
+        // Mostrar el mensaje automáticamente después de la explosión
+        setTimeout(function() {
+            document.getElementById('mensaje').style.display = 'block';
+        }, 1500); // Tiempo de espera para que el corazón "explote"
     </script>
 
 </body>
