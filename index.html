@@ -19,7 +19,7 @@
         .corazon {
             font-size: 50px;
             color: red;
-            animation: crecerYExplosión 3s ease-in-out forwards;
+            animation: crecerYExplosión 1.5s ease-in-out forwards;
             cursor: pointer;
         }
 
@@ -33,16 +33,19 @@
             animation: aparecer 1s ease forwards;
         }
 
-        /* Animación del corazón: crece y explota */
+        /* Animación del corazón: Crece y "explota" */
         @keyframes crecerYExplosión {
             0% {
                 transform: scale(1);
+                opacity: 1;
             }
-            50% {
+            70% {
                 transform: scale(3); /* Crece 3 veces su tamaño */
+                opacity: 1;
             }
             100% {
-                transform: scale(0); /* Se hace invisible (explota) */
+                transform: scale(4); /* Se agranda más */
+                opacity: 0; /* Se desvanece (explosión) */
             }
         }
 
@@ -66,10 +69,14 @@
 
     <script>
         function mostrarMensaje() {
+            // Inicia la animación de explosión
+            const corazon = document.querySelector('.corazon');
+            corazon.style.pointerEvents = 'none'; // Evita múltiples clics
+
             // Muestra el mensaje después de la explosión
             setTimeout(function() {
                 document.getElementById('mensaje').style.display = 'block';
-            }, 3000); // Tiempo de espera para que el corazón "explote"
+            }, 1500); // Tiempo de espera para que el corazón "explote"
         }
     </script>
 
